@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shubham Hire — Strategy, Business Development & Commercial Leadership">
+<title>Shubham Hire — Strategy & Business Development</title>
+<style>
+:root{
+  --bg:#090a0b;--surface:#101214;--surface2:#151719;--text:#f1efe9;
+  --muted:#8e9195;--line:rgba(255,255,255,.11);--gold:#c9a45d;
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.container{width:min(var(--max),calc(100% - 48px));margin:auto}
+.nav{position:fixed;z-index:100;top:0;left:0;right:0;height:74px;border-bottom:1px solid transparent;background:rgba(9,10,11,.62);backdrop-filter:blur(18px);transition:.3s}
+.nav.scrolled{border-color:var(--line)}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:13px;letter-spacing:.16em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:30px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#b8b9bb}
+.nav-links a:hover{color:#fff}
+.menu{display:none;border:0;background:none;color:#fff;font-size:22px}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.02fr .98fr;overflow:hidden}
+.hero-copy{display:flex;flex-direction:column;justify-content:center;padding:120px 6vw 80px max(24px,calc((100vw - var(--max))/2))}
+.kicker,.eyebrow{font-size:10px;font-weight:700;letter-spacing:.23em;text-transform:uppercase;color:var(--gold)}
+.kicker{margin-bottom:25px}
+h1{font-size:clamp(55px,7.6vw,108px);line-height:.88;letter-spacing:-.075em;margin:0;max-width:800px}
+.hero-copy h1 span{color:#77797d}
+.lede{font-size:clamp(16px,1.7vw,21px);color:#bfc0c2;max-width:640px;margin:30px 0 0;line-height:1.45}
+.hero-meta{display:flex;flex-wrap:wrap;gap:25px;margin-top:40px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#85878a}
+.hero-photo{position:relative;min-height:100vh;overflow:hidden;background:#777}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:contrast(1.03) saturate(.82)}
+.hero-photo:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,10,11,.45),transparent 38%),linear-gradient(0deg,rgba(9,10,11,.55),transparent 35%)}
+.photo-caption{position:absolute;z-index:2;bottom:32px;left:32px;padding:12px 15px;border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.24);backdrop-filter:blur(12px);font-size:9px;letter-spacing:.2em;text-transform:uppercase}
+.scroll{position:absolute;bottom:30px;left:50%;font-size:9px;letter-spacing:.18em;color:#777;text-transform:uppercase}
+.metrics{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.metric{padding:29px 20px;border-right:1px solid var(--line)}
+.metric:last-child{border-right:0}
+.metric-value{font-size:clamp(25px,3vw,42px);font-weight:750;letter-spacing:-.055em}
+.metric-label{margin-top:8px;color:#7d8084;font-size:9px;line-height:1.3;letter-spacing:.15em;text-transform:uppercase}
+section{padding:125px 0}
+.section-head{display:flex;justify-content:space-between;gap:50px;align-items:end;margin-bottom:58px}
+h2{font-size:clamp(42px,5.6vw,78px);line-height:.92;letter-spacing:-.065em;margin:9px 0 0;max-width:850px}
+.section-note{max-width:380px;color:var(--muted);font-size:14px}
+.statement{font-size:clamp(27px,4vw,54px);line-height:1.08;letter-spacing:-.045em;max-width:1080px}
+.statement strong{font-weight:500;color:#fff}
+.gold{color:var(--gold)}
+.mandate{display:grid;grid-template-columns:1.15fr .85fr;gap:2px;background:var(--line);border:1px solid var(--line)}
+.mandate-main,.mandate-side{background:var(--surface);padding:45px}
+.mandate-main h3{font-size:clamp(35px,4vw,60px);letter-spacing:-.05em;line-height:.95;margin:15px 0 22px}
+.mandate-main p{color:#a6a8ab;max-width:680px}
+.org{margin-top:40px;display:grid;gap:8px}
+.org-line{border:1px solid var(--line);padding:14px 16px;font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.org-line:first-child{border-color:rgba(201,164,93,.55);color:var(--gold)}
+.mandate-side{display:flex;flex-direction:column;justify-content:space-between}
+.big-number{font-size:clamp(65px,8vw,110px);letter-spacing:-.08em;line-height:.8}
+.big-label{margin-top:17px;color:#85878b;font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+.pipeline{border:1px solid var(--line);background:var(--surface);padding:42px}
+.pipeline-top{display:flex;justify-content:space-between;gap:30px;align-items:end}
+.pipeline-value{font-size:clamp(70px,10vw,135px);line-height:.75;letter-spacing:-.085em}
+.pipeline-copy{max-width:310px;color:#92959a;font-size:13px}
+.bars{margin-top:55px;display:grid;gap:18px}
+.bar-row{display:grid;grid-template-columns:145px 1fr;gap:17px;align-items:center}
+.bar-name{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:#aaa}
+.bar-track{height:6px;background:#24272b;overflow:hidden}
+.bar-fill{width:0;height:100%;background:var(--gold);transition:width 1.3s cubic-bezier(.2,.8,.2,1)}
+.kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.kpi{min-height:190px;background:var(--surface);padding:30px}
+.kpi-number{font-size:50px;line-height:1;letter-spacing:-.065em}
+.kpi-label{margin-top:18px;color:#8d9094;font-size:9px;letter-spacing:.16em;text-transform:uppercase}
+.kpi-desc{margin-top:10px;color:#777a7e;font-size:12px}
+.case-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.case{position:relative;min-height:320px;padding:30px;background:var(--surface);border:1px solid var(--line);overflow:hidden;transition:.35s}
+.case:hover{transform:translateY(-4px);border-color:rgba(201,164,93,.42)}
+.case-no{font-size:10px;color:var(--gold);letter-spacing:.2em}
+.case h3{font-size:32px;letter-spacing:-.04em;line-height:1;margin:15px 0}
+.case p{max-width:600px;color:#96999d;font-size:13px}
+.tags{position:absolute;bottom:27px;left:30px;display:flex;flex-wrap:wrap;gap:7px}
+.tag{border:1px solid var(--line);padding:6px 8px;font-size:8px;color:#8e9195;letter-spacing:.12em}
+.process{display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.step{padding:27px 17px;min-height:175px;border-right:1px solid var(--line)}
+.step:last-child{border-right:0}
+.step-no{color:var(--gold);font-size:9px;letter-spacing:.15em}
+.step h3{font-size:15px;margin:15px 0 8px}
+.step p{font-size:11px;color:#777a7d}
+.career-graph{border:1px solid var(--line);background:var(--surface);padding:34px 30px 42px;overflow-x:auto;overflow-y:hidden}
+.career-axis{display:grid;grid-template-columns:repeat(8,minmax(72px,1fr));color:#b5b6b8;font-size:11px;font-weight:650;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.18);padding:0 4px 15px;min-width:760px}
+.career-axis span{position:relative;text-align:center}
+.career-axis span:after{content:"";position:absolute;left:50%;bottom:-16px;width:1px;height:7px;background:rgba(255,255,255,.18)}
+.career-axis span{text-align:center}
+.career-track{position:relative;height:315px;margin-top:20px;min-width:760px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(12.5% - 1px),rgba(255,255,255,.055) calc(12.5% - 1px),rgba(255,255,255,.055) 12.5%)}
+.career-item{position:absolute;left:var(--start);width:var(--width);min-width:150px}
+.career-item:nth-child(1){top:14px}.career-item:nth-child(2){top:67px}.career-item:nth-child(3){top:120px}.career-item:nth-child(4){top:173px}.career-item:nth-child(5){top:226px}.career-item:nth-child(6){top:279px}
+.career-bar{height:5px;background:var(--gold);width:100%;box-shadow:0 0 22px rgba(201,164,93,.15)}
+.career-item.current .career-bar{height:7px}
+.career-year{font-size:10px;color:var(--gold);font-weight:700;letter-spacing:.13em;margin-top:10px;text-transform:uppercase}
+.career-title{font-size:13px;font-weight:650;margin-top:4px;white-space:nowrap}
+.career-company{font-size:10px;color:#74777b;margin-top:3px;white-space:nowrap}
+.timeline{position:relative;margin-top:20px}
+.timeline:before{content:"";position:absolute;top:0;bottom:0;left:14px;width:1px;background:var(--line)}
+.role{position:relative;padding:0 0 55px 55px}
+.dot{position:absolute;left:9px;top:5px;width:11px;height:11px;border:2px solid var(--gold);background:var(--bg);border-radius:50%}
+.role-year{font-size:10px;color:var(--gold);letter-spacing:.18em}
+.role h3{font-size:25px;letter-spacing:-.03em;margin:8px 0 4px}
+.role-company{color:#aaa;font-size:12px}
+.role-desc{color:#777a7d;font-size:12px;max-width:720px;margin-top:10px}
+.growth{display:grid;grid-template-columns:.72fr 1.28fr;gap:45px;align-items:stretch}
+.growth-number{font-size:clamp(75px,10vw,135px);line-height:.8;letter-spacing:-.09em}
+.growth-copy{color:#898c90;font-size:13px;margin-top:25px;max-width:350px}
+.chart{border:1px solid var(--line);background:var(--surface);padding:30px;display:flex;align-items:end;min-height:340px}
+.chart svg{width:100%;height:260px;overflow:visible}
+.chart-grid{stroke:rgba(255,255,255,.08);stroke-width:1}
+.chart-line{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900;transition:stroke-dashoffset 2s ease}
+.chart-label{fill:#707378;font-size:10px;letter-spacing:1px}
+.cta{border-top:1px solid var(--line);padding-top:80px}
+.cta h2{max-width:900px}
+.cta-row{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-top:45px}
+.cta-text{color:#898c90;max-width:500px;font-size:14px}
+.cta-button{display:inline-flex;align-items:center;gap:16px;border:1px solid rgba(201,164,93,.65);padding:17px 21px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);transition:.3s}
+.cta-button:hover{background:var(--gold);color:#111}
+.contact-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+footer{border-top:1px solid var(--line);padding:28px 0;color:#686b6f;font-size:9px;letter-spacing:.13em;text-transform:uppercase}
+.footer-inner{display:flex;justify-content:space-between;gap:20px}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .75s ease,transform .75s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* Interactive executive cockpit */
+.cockpit{background:linear-gradient(180deg,#0f1113,#0b0c0e);border:1px solid var(--line);padding:24px}
+.cockpit-nav{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:18px}
+.cockpit-btn{border:1px solid var(--line);background:transparent;color:#85888c;padding:10px 13px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.cockpit-btn:hover,.cockpit-btn.active{border-color:rgba(201,164,93,.65);color:var(--gold);background:rgba(201,164,93,.06)}
+.cockpit-content{display:grid;grid-template-columns:1.15fr .85fr;gap:1px;background:var(--line);margin-top:22px}
+.cockpit-main,.cockpit-side{background:var(--surface);padding:30px}
+.cockpit-title{font-size:32px;letter-spacing:-.04em;margin:0 0 10px}
+.cockpit-desc{color:#85888c;font-size:13px;max-width:650px;margin:0 0 28px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.flow-step{position:relative;border:1px solid var(--line);padding:15px 12px;min-height:92px;transition:.25s}
+.flow-step.active{border-color:rgba(201,164,93,.6);transform:translateY(-2px)}
+.flow-step b{display:block;font-size:9px;color:var(--gold);letter-spacing:.15em}
+.flow-step span{display:block;margin-top:11px;font-size:11px;color:#b5b7ba}
+.side-stat{padding:16px 0;border-bottom:1px solid var(--line)}
+.side-stat:last-child{border-bottom:0}
+.side-stat-num{font-size:34px;letter-spacing:-.05em}
+.side-stat-label{font-size:9px;color:#777a7e;text-transform:uppercase;letter-spacing:.15em}
+.dashboard-grid{display:grid;grid-template-columns:1.4fr .6fr;gap:18px}
+.mini-dashboard{border:1px solid var(--line);background:var(--surface);padding:30px}
+.dashboard-title{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#aaa;margin-bottom:24px}
+.sparkline{height:145px;position:relative;border-bottom:1px solid var(--line);border-left:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,rgba(255,255,255,.045) 36px)}
+.sparkline svg{width:100%;height:100%}
+.spark-line{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:800;stroke-dashoffset:800;transition:stroke-dashoffset 1.8s ease}
+.dashboard-legend{display:flex;justify-content:space-between;color:#6f7276;font-size:9px;margin-top:12px;letter-spacing:.12em;text-transform:uppercase}
+.ring-wrap{display:grid;place-items:center;min-height:205px}
+.ring{width:145px;height:145px;border-radius:50%;background:conic-gradient(var(--gold) 0 72%,#292c30 72% 100%);display:grid;place-items:center;position:relative}
+.ring:after{content:"";width:108px;height:108px;background:var(--surface);border-radius:50%;position:absolute}
+.ring-center{position:relative;z-index:1;text-align:center}.ring-center b{display:block;font-size:32px;letter-spacing:-.05em}.ring-center span{font-size:8px;letter-spacing:.14em;color:#777;text-transform:uppercase}
+.dashboard-disclaimer{font-size:9px;color:#55595d;margin-top:15px}
+
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:55px;border:1px solid var(--line)}
+.contact-card{position:relative;background:var(--surface);padding:25px;min-height:120px;transition:.25s}
+.contact-card:hover{background:var(--surface2)}
+.contact-card span{display:block;color:var(--gold);font-size:9px;letter-spacing:.18em}
+.contact-card b{display:block;margin-top:13px;font-size:14px;font-weight:500;color:#d4d5d6}
+.contact-card i{position:absolute;right:22px;bottom:20px;font-style:normal;color:#666}
+@media(max-width:620px){.contact-grid{grid-template-columns:1fr}}
+
+@media(max-width:950px){.cockpit-content,.dashboard-grid{grid-template-columns:1fr}.flow{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.cockpit{padding:16px}.flow{grid-template-columns:1fr 1fr}.cockpit-main,.cockpit-side,.mini-dashboard{padding:22px}}
+
+@media(max-width:950px){
+  .nav-links{display:none}.menu{display:block}
+  .hero{grid-template-columns:1fr;min-height:auto}.hero-copy{min-height:76vh;padding-top:130px}
+  .hero-photo{width:min(360px,72vw);height:auto;min-height:0;margin:0 auto 60px}.scroll{display:none}
+  .metrics{grid-template-columns:repeat(3,1fr)}.metric:nth-child(3){border-right:0}.metric:nth-child(n+4){border-top:1px solid var(--line)}
+  .section-head{display:block}.section-note{margin-top:22px}
+  .mandate,.growth{grid-template-columns:1fr}.process{grid-template-columns:repeat(3,1fr)}
+  .career-graph{overflow-x:auto}.career-track{min-width:760px}.career-axis{min-width:760px}
+  .step:nth-child(3){border-right:0}.step:nth-child(n+4){border-top:1px solid var(--line)}
+}
+@media(max-width:620px){
+  .container{width:min(var(--max),calc(100% - 32px))}
+  .hero-copy{padding-left:20px;padding-right:20px}.hero-photo{height:62vh}
+  .metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(odd){border-right:1px solid var(--line)}.metric:nth-child(even){border-right:0}
+  .metric:nth-child(n+3){border-top:1px solid var(--line)}
+  section{padding:85px 0}.grid-2,.case-grid{grid-template-columns:1fr}
+  .kpi-grid{grid-template-columns:1fr}.process{grid-template-columns:1fr 1fr}
+  .career-graph{padding:25px 18px}.career-track{min-width:760px}
+  .step{border-right:1px solid var(--line)!important}.step:nth-child(even){border-right:0!important}
+  .step:nth-child(n+3){border-top:1px solid var(--line)}
+  .pipeline{padding:25px}.pipeline-top{display:block}.pipeline-copy{margin-top:25px}
+  .bar-row{grid-template-columns:105px 1fr}.cta-row{display:block}.contact-actions{justify-content:flex-start;margin-top:28px}.cta-button{margin-top:0}
+  .footer-inner{display:block}.footer-inner div+div{margin-top:10px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#top">SHUBHAM <span>HIRE</span></a>
+    <div class="nav-links">
+      <a href="#mandate">Strategy</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#work">Work</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile')">☰</button>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="hero-copy">
+    <div class="kicker">Strategy · Business Development · Commercial Leadership</div>
+    <h1>Turning complex opportunities into <span>commercial outcomes.</span></h1>
+    <p class="lede">A construction and commercial leader operating across strategy, business development, partnerships and executive-level governance in India and the U.S.</p>
+    <div class="hero-meta">
+      <span>Mumbai · India</span><span>India + U.S. Markets</span><span>Construction · Real Estate</span>
+    </div>
+    <div style="margin-top:24px;color:#62656a;font-size:9px;letter-spacing:.14em;text-transform:uppercase">Direct executive interface · Commercial strategy · Growth</div>
+  </div>
+  <div class="hero-photo">
+    <img src="shubham.jpg" alt="Shubham Hire">
+    <div class="photo-caption">Executive Profile · Strategy & Business Development</div>
+  </div>
+</section>
+
+<div class="metrics">
+  <div class="metric"><div class="metric-value" data-count="650" data-prefix="₹" data-suffix="+ Cr">0</div><div class="metric-label">Active pursuit pipeline</div></div>
+  <div class="metric"><div class="metric-value" data-count="160" data-prefix="$" data-suffix="M+">0</div><div class="metric-label">Combined project value</div></div>
+  <div class="metric"><div class="metric-value" data-count="57" data-prefix="$" data-suffix="M">0</div><div class="metric-label">Flagship project</div></div>
+  <div class="metric"><div class="metric-value" data-count="13" data-prefix="$" data-suffix="M">0</div><div class="metric-label">Annual account portfolio</div></div>
+  <div class="metric"><div class="metric-value" data-count="40" data-suffix="+">0</div><div class="metric-label">Trade vendors coordinated</div></div>
+  <div class="metric"><div class="metric-value" data-count="15" data-prefix="~" data-suffix="%">0</div><div class="metric-label">YoY revenue growth</div></div>
+</div>
+
+<section id="mandate">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">01 / Executive mandate</div><h2>Operating from the MD's office.</h2></div>
+      <p class="section-note">The current mandate combines strategy, growth, commercial positioning and management governance.</p>
+    </div>
+    <div class="mandate reveal">
+      <div class="mandate-main">
+        <div class="eyebrow">Piramal Nextgen Industries Pvt. Ltd. · Mumbai</div>
+        <h3>First strategy mandate.<br>Direct executive interface.</h3>
+        <p>Reporting directly to the Joint Managing Director and operating as an extension of the MD's office, with ownership spanning business development, commercial and contractual positioning, external consulting governance, management reporting and strategic partnerships.</p>
+        <div class="org">
+          <div class="org-line">Joint Managing Director / MD's Office</div>
+          <div class="org-line">Strategy + Business Development</div>
+          <div class="org-line">Commercial · Partnerships · Governance</div>
+        </div>
+      </div>
+      <div class="mandate-side">
+        <div>
+          <div class="big-number">₹650+</div>
+          <div class="big-label">Crore live opportunity pipeline</div>
+        </div>
+        <div>
+          <div class="big-number">2026</div>
+          <div class="big-label">Current strategy mandate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">02 / Commercial intelligence</div><h2>A live pipeline built for growth.</h2></div>
+      <p class="section-note">Active pursuits span fitout, interiors, healthcare and institutional opportunities.</p>
+    </div>
+    <div class="pipeline reveal">
+      <div class="pipeline-top">
+        <div class="pipeline-value">₹650<sup>+</sup></div>
+        <div class="pipeline-copy">CRORE ACTIVE PURSUIT PIPELINE<br><br>Opportunity qualification · pre-qualification · bid strategy · commercial structuring · negotiation</div>
+      </div>
+      <div class="bars">
+        <div class="bar-row"><div class="bar-name">Fitout</div><div class="bar-track"><div class="bar-fill" data-width="92%"></div></div></div>
+        <div class="bar-row"><div class="bar-name">Interiors</div><div class="bar-track"><div class="bar-fill" data-width="78%"></div></div></div>
+        <div class="bar-row"><div class="bar-name">Healthcare</div><div class="bar-track"><div class="bar-fill" data-width="66%"></div></div></div>
+        <div class="bar-row"><div class="bar-name">Institutional</div><div class="bar-track"><div class="bar-fill" data-width="58%"></div></div></div>
+      </div>
+      <p style="color:#666;font-size:10px;margin:28px 0 0">Visual bars represent the presence of sectors in the active pipeline, not disclosed sector-wise monetary allocation.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">03 / Command center</div><h2>Numbers that show the operating range.</h2></div>
+      <p class="section-note">Selected metrics from strategy, commercial ownership, project delivery and transformation work.</p>
+    </div>
+    <div class="kpi-grid reveal">
+      <div class="kpi"><div class="kpi-number" data-count="4">0</div><div class="kpi-label">Alliance parties</div><div class="kpi-desc">Healthcare infrastructure strategic alliance.</div></div>
+      <div class="kpi"><div class="kpi-number" data-count="13">0</div><div class="kpi-label">Transformation workstreams</div><div class="kpi-desc">Finance + operations data transformation programme.</div></div>
+      <div class="kpi"><div class="kpi-number" data-count="39">0</div><div class="kpi-label">Activities governed</div><div class="kpi-desc">Tracked across Tally, RDash and Power BI.</div></div>
+      <div class="kpi"><div class="kpi-number">₹20L</div><div class="kpi-label">Programme value</div><div class="kpi-desc">Four-month finance and operations transformation.</div></div>
+      <div class="kpi"><div class="kpi-number" data-count="4">0</div><div class="kpi-label">Months</div><div class="kpi-desc">Transformation delivery horizon.</div></div>
+      <div class="kpi"><div class="kpi-number">~15%</div><div class="kpi-label">YoY revenue growth</div><div class="kpi-desc">Delivered in commercial account leadership.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">04 / Selected work</div><h2>Strategy is measured by what moves.</h2></div>
+      <p class="section-note">From opportunity creation to commercial defence and management control.</p>
+    </div>
+    <div class="case-grid">
+      <article class="case reveal"><div class="case-no">CASE 01</div><h3>₹650+ Cr Pursuit Pipeline</h3><p>Built and currently manage an active pipeline across fitout, interiors, healthcare and institutional segments, owning the commercial journey from qualification through negotiation.</p><div class="tags"><span class="tag">GROWTH</span><span class="tag">BD</span><span class="tag">COMMERCIAL</span></div></article>
+      <article class="case reveal"><div class="case-no">CASE 02</div><h3>Four-Party Healthcare Alliance</h3><p>Structured an alliance across a design firm, healthcare operator and two construction partners — from first meeting through executive summary and internal approval.</p><div class="tags"><span class="tag">PARTNERSHIPS</span><span class="tag">HEALTHCARE</span><span class="tag">STRATEGY</span></div></article>
+      <article class="case reveal"><div class="case-no">CASE 03</div><h3>Airport Commercial Defence</h3><p>Established a financial reconciliation and obligations register on a major airport project to defend against subcontractor claims and establish counter positions.</p><div class="tags"><span class="tag">CLAIMS</span><span class="tag">COMMERCIAL</span><span class="tag">RISK</span></div></article>
+      <article class="case reveal"><div class="case-no">CASE 04</div><h3>₹20L Data Transformation</h3><p>Governed a four-month finance and operations transformation spanning 13 workstreams and 39 activities across Tally, RDash and Power BI, driving management-level course correction.</p><div class="tags"><span class="tag">GOVERNANCE</span><span class="tag">POWER BI</span><span class="tag">TRANSFORMATION</span></div></article>
+      <article class="case reveal"><div class="case-no">CASE 05</div><h3>$57M Flagship Build</h3><p>Managed cross-functional delivery across vendors, design consultants and field teams on a $57M multifamily residential project, with ~$42M in awarded contracts across 40+ vendors.</p><div class="tags"><span class="tag">PROJECT MANAGEMENT</span><span class="tag">CONSTRUCTION</span><span class="tag">$57M</span></div></article>
+      <article class="case reveal"><div class="case-no">CASE 06</div><h3>$13M Account Ownership</h3><p>Managed $12–13M in annual commercial sales as sole client-facing owner for scope, pricing and bid negotiations, driving approximately 15% YoY revenue growth.</p><div class="tags"><span class="tag">KEY ACCOUNTS</span><span class="tag">SALES</span><span class="tag">GROWTH</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">05 / Operating model</div><h2>From opportunity to outcome.</h2></div>
+      <p class="section-note">A full-cycle commercial approach grounded in construction reality.</p>
+    </div>
+    <div class="process reveal">
+      <div class="step"><div class="step-no">01</div><h3>Identify</h3><p>Source opportunities and understand the market.</p></div>
+      <div class="step"><div class="step-no">02</div><h3>Qualify</h3><p>Assess fit, viability and strategic value.</p></div>
+      <div class="step"><div class="step-no">03</div><h3>Position</h3><p>Shape bid strategy and commercial logic.</p></div>
+      <div class="step"><div class="step-no">04</div><h3>Negotiate</h3><p>Align pricing, terms and contractual positions.</p></div>
+      <div class="step"><div class="step-no">05</div><h3>Partner</h3><p>Build alliances across clients, consultants and delivery teams.</p></div>
+      <div class="step"><div class="step-no">06</div><h3>Govern</h3><p>Install reporting, accountability and control systems.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="dashboard">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">05 / Interactive dashboard</div><h2>See the operating model in motion.</h2></div>
+      <p class="section-note">Explore the four dimensions of the role. The dashboard uses disclosed metrics and process data; it does not imply undisclosed financial allocations.</p>
+    </div>
+    <div class="cockpit reveal">
+      <div class="cockpit-nav" role="tablist">
+        <button class="cockpit-btn active" data-panel="growth">Growth</button>
+        <button class="cockpit-btn" data-panel="commercial">Commercial</button>
+        <button class="cockpit-btn" data-panel="partnerships">Partnerships</button>
+        <button class="cockpit-btn" data-panel="governance">Governance</button>
+      </div>
+      <div class="cockpit-content">
+        <div class="cockpit-main">
+          <div class="eyebrow" id="cockpitEyebrow">GROWTH ENGINE</div>
+          <h3 class="cockpit-title" id="cockpitTitle">Building a qualified pipeline, not just a contact list.</h3>
+          <p class="cockpit-desc" id="cockpitDesc">End-to-end ownership across opportunity qualification, pre-qualification, bid strategy, commercial structuring and negotiation.</p>
+          <div class="flow" id="cockpitFlow">
+            <div class="flow-step active"><b>01</b><span>Identify</span></div><div class="flow-step"><b>02</b><span>Qualify</span></div><div class="flow-step"><b>03</b><span>Position</span></div><div class="flow-step"><b>04</b><span>Convert</span></div><div class="flow-step"><b>05</b><span>Grow</span></div>
+          </div>
+        </div>
+        <div class="cockpit-side" id="cockpitStats">
+          <div class="side-stat"><div class="side-stat-num">₹650+ Cr</div><div class="side-stat-label">Active pursuit pipeline</div></div>
+          <div class="side-stat"><div class="side-stat-num">~15%</div><div class="side-stat-label">YoY revenue growth</div></div>
+          <div class="side-stat"><div class="side-stat-num">4</div><div class="side-stat-label">Market segments in current pipeline</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-grid reveal" style="margin-top:18px">
+      <div class="mini-dashboard">
+        <div class="dashboard-title">Commercial growth / indexed view</div>
+        <div class="sparkline"><svg viewBox="0 0 800 145" preserveAspectRatio="none"><path class="spark-line" d="M0 128 C90 126 115 119 175 111 S280 94 330 99 S425 77 475 72 S590 54 635 42 S730 27 800 12"/></svg></div>
+        <div class="dashboard-legend"><span>Prior period</span><span>~15% YoY outcome</span></div>
+        <div class="dashboard-disclaimer">Indexed visualization of the disclosed growth result — underlying revenue figures are not presented because they were not supplied.</div>
+      </div>
+      <div class="mini-dashboard">
+        <div class="dashboard-title">Operating footprint</div>
+        <div class="ring-wrap"><div class="ring"><div class="ring-center"><b>4</b><span>Core pillars</span></div></div></div>
+        <div class="dashboard-legend"><span>Strategy</span><span>BD · Commercial · Governance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">06 / Career evolution</div><h2>Built from the field up.</h2></div>
+      <p class="section-note">Technical credibility first. Commercial ownership next. Strategy at the executive table.</p>
+    </div>
+    <div class="career-graph reveal">
+      <div class="career-axis">
+        <span>2019</span><span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024</span><span>2025</span><span>2026</span>
+      </div>
+      <div class="career-track">
+        <div class="career-item" style="--start:0%;--width:14%">
+          <div class="career-bar"></div><div class="career-year">2019–2020</div><div class="career-title">Project Engineering</div><div class="career-company">Moss & Associates / Willmeng</div>
+        </div>
+        <div class="career-item" style="--start:28%;--width:29%">
+          <div class="career-bar"></div><div class="career-year">2021–2023</div><div class="career-title">Estimation → Key Accounts</div><div class="career-company">Crown Roofing & Waterproofing</div>
+        </div>
+        <div class="career-item" style="--start:51%;--width:12%">
+          <div class="career-bar"></div><div class="career-year">2023–2024</div><div class="career-title">Project Management</div><div class="career-company">Greystar</div>
+        </div>
+        <div class="career-item" style="--start:58%;--width:29%">
+          <div class="career-bar"></div><div class="career-year">2024–Present</div><div class="career-title">Strategic Partnerships</div><div class="career-company">VShine Capital Partners</div>
+        </div>
+        <div class="career-item" style="--start:69%;--width:31%">
+          <div class="career-bar"></div><div class="career-year">2025–Present</div><div class="career-title">Pre-Construction Consulting</div><div class="career-company">BuildOps Solutions</div>
+        </div>
+        <div class="career-item current" style="--start:84%;--width:16%">
+          <div class="career-bar"></div><div class="career-year">2026–Present</div><div class="career-title">Strategy & Business Development</div><div class="career-company">Piramal Nextgen Industries</div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline" style="margin-top:60px">
+      <div class="role reveal"><div class="dot"></div><div class="role-year">2026 — PRESENT</div><h3>Strategy & Business Development</h3><div class="role-company">Piramal Nextgen Industries Pvt. Ltd. · Mumbai</div><div class="role-desc">First strategy mandate, direct JMD reporting, ₹650+ Cr active pursuit pipeline, commercial positioning, partnerships and governance.</div></div>
+      <div class="role reveal"><div class="dot"></div><div class="role-year">2025 — PRESENT</div><h3>Pre-Construction Consultant</h3><div class="role-company">BuildOps Solutions · Independent Practice · Remote / USA</div><div class="role-desc">End-to-end pre-construction pipelines for U.S. contractors, from opportunity identification and qualification through bid positioning and stakeholder alignment.</div></div>
+      <div class="role reveal"><div class="dot"></div><div class="role-year">2024 — PRESENT</div><h3>Director, Strategic Partnerships</h3><div class="role-company">VShine Capital Partners · Mumbai</div><div class="role-desc">Advisory work across capital planning, growth positioning, operational alignment and senior relationships in construction and real estate.</div></div>
+      <div class="role reveal"><div class="dot"></div><div class="role-year">2023 — 2024</div><h3>Project Manager</h3><div class="role-company">Greystar · Tampa, Florida</div><div class="role-desc">$57M multifamily project; cross-functional delivery, commercial structuring and contract alignment across 40+ vendors.</div></div>
+      <div class="role reveal"><div class="dot"></div><div class="role-year">2021 — 2023</div><h3>Lead Estimator → Key Account Manager</h3><div class="role-company">Crown Roofing & Waterproofing LLC · Fort Myers, Florida</div><div class="role-desc">$12–13M annual commercial sales ownership with approximately 15% YoY revenue growth.</div></div>
+      <div class="role reveal"><div class="dot"></div><div class="role-year">2019 — 2020</div><h3>Project Engineer</h3><div class="role-company">Moss & Associates / Willmeng Construction · USA</div><div class="role-desc">Project controls, cost tracking, schedule management, vendor coordination and contract administration.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head reveal">
+      <div><div class="eyebrow">07 / Commercial track record</div><h2>Growth with operating discipline.</h2></div>
+      <p class="section-note">Commercial account growth during the 2021–2023 Key Account Management period, with approximately 15% YoY revenue growth reported.</p>
+    </div>
+    <div class="growth reveal">
+      <div>
+        <div class="growth-number">~15%</div>
+        <div class="eyebrow" style="margin-top:22px">Year-over-year revenue growth</div>
+        <p class="growth-copy">2021 → 2023 · Growth was driven through tighter estimate accuracy, proactive account retention and rigorous pipeline tracking.</p>
+      </div>
+      <div class="chart">
+        <div style="position:absolute;opacity:0;pointer-events:none"></div>
+        <svg viewBox="0 0 700 260" role="img" aria-label="Illustrative indexed revenue growth chart">
+          <line class="chart-grid" x1="30" y1="210" x2="670" y2="210"/>
+          <line class="chart-grid" x1="30" y1="145" x2="670" y2="145"/>
+          <line class="chart-grid" x1="30" y1="80" x2="670" y2="80"/>
+          <path class="chart-line" d="M45 205 C135 202 165 190 230 180 S330 151 390 145 S505 112 555 92 S620 72 655 50"/>
+          <text class="chart-label" x="30" y="238">2021</text>
+          <text class="chart-label" x="325" y="238">2022</text>
+          <text class="chart-label" x="625" y="238">2023</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="cta reveal">
+      <div class="eyebrow">09 / Start a conversation</div>
+      <h2>Have an opportunity worth pursuing?</h2>
+      <div class="cta-row">
+        <p class="cta-text">For strategic partnerships, major project opportunities, commercial growth, business development or executive-level problem solving.</p>
+        <div class="contact-actions">
+          <a class="cta-button" href="mailto:shubham.hirerk@outlook.com">Email <span>↗</span></a>
+          <a class="cta-button" href="tel:+919075921809">Call <span>↗</span></a>
+          <a class="cta-button" href="https://linkedin.com/in/sh1p" target="_blank" rel="noopener">LinkedIn <span>↗</span></a>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <a class="contact-card" href="https://www.linkedin.com/in/sh1p" target="_blank" rel="noopener"><span>LINKEDIN</span><b>Connect professionally</b><i>↗</i></a>
+        <a class="contact-card" href="mailto:shubham.hirerk@outlook.com"><span>EMAIL</span><b>shubham.hirerk@outlook.com</b><i>↗</i></a>
+        <a class="contact-card" href="tel:+919075921809"><span>PHONE</span><b>+91 90759 21809</b><i>↗</i></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>SHUBHAM HIRE · STRATEGY & BUSINESS DEVELOPMENT</div>
+    <div>MUMBAI · INDIA / USA</div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30));
+
+const animateCount=(el)=>{
+  if(el.dataset.done)return; el.dataset.done='1';
+  const target=Number(el.dataset.count),prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'';
+  const start=performance.now(),duration=1200;
+  const tick=(now)=>{
+    const p=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=prefix+Math.round(target*eased).toLocaleString('en-IN')+suffix;
+    if(p<1)requestAnimationFrame(tick);
+  }; requestAnimationFrame(tick);
+};
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    entry.target.classList.add('visible');
+    if(entry.target.matches('.metric-value[data-count],.kpi-number[data-count]'))animateCount(entry.target);
+    entry.target.querySelectorAll?.('.metric-value[data-count],.kpi-number[data-count]').forEach(animateCount);
+    entry.target.querySelectorAll?.('.bar-fill').forEach(b=>b.style.width=b.dataset.width);
+    const line=entry.target.querySelector?.('.chart-line, .spark-line');
+    if(line)line.style.strokeDashoffset='0';
+    observer.unobserve(entry.target);
+  });
+},{threshold:.18});
+
+document.querySelectorAll('.reveal,.metric-value[data-count],.kpi-number[data-count]').forEach(el=>observer.observe(el));
+document.querySelectorAll('.bar-fill').forEach(el=>observer.observe(el));
+
+document.querySelector('.menu').addEventListener('click',()=>{
+  const links=document.querySelector('.nav-links');
+  if(links.classList.contains('mobile')){
+    links.removeAttribute('style');
+    links.classList.remove('mobile');
+  }else{
+    links.classList.add('mobile');
+    links.style.cssText='display:flex;position:absolute;top:73px;left:0;right:0;padding:22px 24px;background:#0b0c0e;flex-direction:column;gap:18px;border-bottom:1px solid rgba(255,255,255,.1)';
+  }
+});
+
+const cockpitData={
+ growth:{eyebrow:'GROWTH ENGINE',title:'Building a qualified pipeline, not just a contact list.',desc:'End-to-end ownership across opportunity qualification, pre-qualification, bid strategy, commercial structuring and negotiation.',flow:['Identify','Qualify','Position','Convert','Grow'],stats:[['₹650+ Cr','Active pursuit pipeline'],['~15%','YoY revenue growth'],['4','Current pipeline segments']]},
+ commercial:{eyebrow:'COMMERCIAL ENGINE',title:'Technical fluency that reaches the negotiating table.',desc:'Construction experience informs scope, pricing, contract alignment, claims positioning and client-side commercial decisions.',flow:['Scope','Price','Position','Negotiate','Close'],stats:[['$160M+','Combined project value'],['$57M','Flagship project'],['$13M','Annual account portfolio']]},
+ partnerships:{eyebrow:'PARTNERSHIP ENGINE',title:'Structuring relationships around real opportunities.',desc:'Multi-party alliances and senior stakeholder relationships connect market access, delivery capability and commercial objectives.',flow:['Map','Meet','Align','Structure','Activate'],stats:[['4','Alliance parties'],['1','Healthcare alliance'],['2','Markets: India + U.S.']]},
+ governance:{eyebrow:'GOVERNANCE ENGINE',title:'Turning moving parts into management visibility.',desc:'Management reporting, accountability trackers, project controls and transformation governance create a clearer operating picture for leadership.',flow:['Track','Reconcile','Report','Review','Correct'],stats:[['13','Transformation workstreams'],['39','Activities governed'],['40+','Trade vendors coordinated']]}
+};
+function renderCockpit(key){
+ const d=cockpitData[key];
+ document.getElementById('cockpitEyebrow').textContent=d.eyebrow;
+ document.getElementById('cockpitTitle').textContent=d.title;
+ document.getElementById('cockpitDesc').textContent=d.desc;
+ document.getElementById('cockpitFlow').innerHTML=d.flow.map((x,i)=>`<div class="flow-step ${i===0?'active':''}"><b>${String(i+1).padStart(2,'0')}</b><span>${x}</span></div>`).join('');
+ document.getElementById('cockpitStats').innerHTML=d.stats.map(x=>`<div class="side-stat"><div class="side-stat-num">${x[0]}</div><div class="side-stat-label">${x[1]}</div></div>`).join('');
+ document.querySelectorAll('.cockpit-btn').forEach(b=>b.classList.toggle('active',b.dataset.panel===key));
+ document.querySelectorAll('.flow-step').forEach((step,i)=>step.addEventListener('mouseenter',()=>{document.querySelectorAll('.flow-step').forEach(s=>s.classList.remove('active'));step.classList.add('active')}));
+}
+document.querySelectorAll('.cockpit-btn').forEach(btn=>btn.addEventListener('click',()=>renderCockpit(btn.dataset.panel)));
+</script>
+</body>
+</html>
